@@ -22,7 +22,7 @@ html, body {
 .fullscreen-image {
     width: 100%; /* Force full width */
     height: auto; /* Height will adjust automatically */
-    object-fit: contain;
+    object-fit: cover;
     display: block;
     max-height: 100vh; /* Ensure it doesn't overflow vertically */
 } 
