@@ -7,19 +7,23 @@ function startSlideshow() {
         if (isTransitioning) return;
         isTransitioning = true;
 
-        // Remove active class from current slide
-        slides[currentSlide].classList.remove('active');
-        
-        // Move to next slide
+        // Get current and next slide
+        const current = slides[currentSlide];
         currentSlide = (currentSlide + 1) % slides.length;
-        
-        // Add active class to next slide
-        slides[currentSlide].classList.add('active');
+        const next = slides[currentSlide];
 
-        // Reset transition lock after animation completes
+        // Add previous class to current slide
+        current.classList.add('previous');
+        current.classList.remove('active');
+
+        // Add active class to next slide
+        next.classList.add('active');
+
+        // Reset transition lock and remove previous class after animation
         setTimeout(() => {
+            current.classList.remove('previous');
             isTransitioning = false;
-        }, 1500); // Match this with CSS transition time
+        }, 500); // Match this with CSS transition time
     }
 
     // Preload images for smoother transitions
@@ -35,8 +39,8 @@ function startSlideshow() {
     preloadImages();
     slides[0].classList.add('active');
 
-    // Change slide every 60 seconds
-    setInterval(showNextSlide, 3000);
+    // Change slide every 10 seconds
+    setInterval(showNextSlide, 10000);
 }
 
 // Start the slideshow when the page loads

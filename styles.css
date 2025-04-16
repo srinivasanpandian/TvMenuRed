@@ -27,21 +27,6 @@ html, body {
     overflow: hidden;
 }
 
-.fade-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        circle at center,
-        transparent 60%,
-        rgba(0,0,0,0.3) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-}
-
 .slide {
     width: 100%;
     height: 100%;
@@ -49,14 +34,19 @@ html, body {
     top: 0;
     left: 0;
     opacity: 0;
-    transform: scale(1.05);
-    transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     object-fit: cover;
 }
 
 .slide.active {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(0);
+}
+
+.slide.previous {
+    opacity: 1;
+    transform: translateX(-100%);
 }
 
 /* Remove old fullscreen-image class as it's no longer needed */ 
