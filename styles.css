@@ -8,6 +8,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: #000;
 }
 
 .fullscreen-container {
@@ -16,13 +17,29 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black; /* This ensures no white edges appear */
+    background-color: black;
 }
 
 .slideshow {
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
+}
+
+.fade-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at center,
+        transparent 60%,
+        rgba(0,0,0,0.3) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
 }
 
 .slide {
@@ -32,18 +49,14 @@ html, body {
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transform: scale(1.05);
+    transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
     object-fit: cover;
 }
 
 .slide.active {
     opacity: 1;
+    transform: scale(1);
 }
 
-.fullscreen-image {
-    width: 100%; /* Force full width */
-    height: auto; /* Height will adjust automatically */
-    object-fit: cover;
-    display: block;
-    max-height: 100vh; /* Ensure it doesn't overflow vertically */
-} 
+/* Remove old fullscreen-image class as it's no longer needed */ 
