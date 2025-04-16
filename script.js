@@ -36,7 +36,7 @@ function startSlideshow() {
     slides[0].classList.add('active');
 
     // Change slide every 60 seconds
-    setInterval(showNextSlide, 60000);
+    setInterval(showNextSlide, 3000);
 }
 
 // Start the slideshow when the page loads
