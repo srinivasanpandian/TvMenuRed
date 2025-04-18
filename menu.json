@@ -3,10 +3,10 @@
         {
             "name": "MAIN MENU",
             "items": [
-                { "name": "GARLIC BREAD", "price": 10.49, "available": true, "image": "img/b1.jpeg" },
+                { "name": "GARLIC BREAD", "price": 10.49, "available": false, "image": "img/b1.jpeg" },
                 { "name": "TRUFFLE PIZZA", "price": 16.99, "available": true, "image": "img/b2.jpeg" },
                 { "name": "CHICKEN WINGS", "price": 14.99, "available": true, "image": "img/b3.jpeg" },
-                { "name": "MANGO SALAD", "price": 18.49, "available": false, "image": "img/b4.jpeg" },
+                { "name": "MANGO SALAD", "price": 18.49, "available": true, "image": "img/b4.jpeg" },
                 { "name": "SUSHI ROLL", "price": 13.49, "available": true, "image": "img/b5.jpg" }
             ]
         },
