@@ -5,85 +5,79 @@ async function loadMenuData() {
     try {
         const response = await fetch('menu.json');
         menuData = await response.json();
-        renderMenu();
-        renderPopularItems();
-        showStatusMessage();
+        renderMenus();
     } catch (error) {
         console.error('Error loading menu:', error);
     }
 }
 
-// Function to render menu sections
-function renderMenu() {
-    const leftColumn = document.getElementById('left-column');
-    const rightColumn = document.getElementById('right-column');
-
-    // Clear existing content
-    leftColumn.innerHTML = '';
-    rightColumn.innerHTML = '';
-
-    // Render categories (split between left and right columns)
-    const midPoint = Math.ceil(menuData.categories.length / 2);
-    
-    // Left column categories
-    menuData.categories.slice(0, midPoint).forEach(category => {
-        leftColumn.appendChild(createMenuSection(category));
-    });
-
-    // Right column categories
-    menuData.categories.slice(midPoint).forEach(category => {
-        rightColumn.appendChild(createMenuSection(category));
-    });
+// Function to render menus
+function renderMenus() {
+    renderMainMenu();
+    renderDessertMenu();
 }
 
-// Function to create a menu section
-function createMenuSection(category) {
-    const section = document.createElement('div');
-    section.className = 'menu-section';
+// Function to render main menu
+function renderMainMenu() {
+    const mainMenuContainer = document.getElementById('main-menu');
+    const mainMenu = menuData.categories.find(cat => cat.name === "MAIN MENU");
     
-    const title = document.createElement('h2');
-    title.textContent = category.name;
-    section.appendChild(title);
+    if (mainMenu) {
+        mainMenuContainer.innerHTML = '';
+        mainMenu.items.forEach(item => {
+            const menuItem = createMenuItem(item);
+            mainMenuContainer.appendChild(menuItem);
+        });
+    }
+}
 
-    const items = document.createElement('div');
-    items.className = 'menu-items';
+// Function to render dessert menu
+function renderDessertMenu() {
+    const dessertMenuContainer = document.getElementById('dessert-menu');
+    const dessertMenu = menuData.categories.find(cat => cat.name === "DESSERT MENU");
+    
+    if (dessertMenu) {
+        dessertMenuContainer.innerHTML = '';
+        dessertMenu.items.forEach(item => {
+            const menuItem = createMenuItem(item);
+            dessertMenuContainer.appendChild(menuItem);
+        });
+    }
+}
 
-    category.items.forEach(item => {
-        const menuItem = document.createElement('div');
-        menuItem.className = `menu-item ${item.available ? '' : 'unavailable'}`;
+// Function to create a menu item
+function createMenuItem(item) {
+    const menuItem = document.createElement('div');
+    menuItem.className = `menu-item ${item.available ? '' : 'unavailable'}`;
 
-        const itemDetails = document.createElement('div');
-        itemDetails.className = 'item-details';
+    const itemDetails = document.createElement('div');
+    itemDetails.className = 'item-details';
 
-        // Add item image
-        const image = document.createElement('img');
-        image.src = item.image;
-        image.alt = item.name;
-        image.className = 'item-image';
-        itemDetails.appendChild(image);
+    // Add item image
+    const image = document.createElement('img');
+    image.src = item.image;
+    image.alt = item.name;
+    image.className = 'item-image';
+    itemDetails.appendChild(image);
 
-        // Add item text container
-        const itemText = document.createElement('div');
-        itemText.className = 'item-text';
+    // Add item text container
+    const itemText = document.createElement('div');
+    itemText.className = 'item-text';
 
-        const name = document.createElement('span');
-        name.className = 'item-name';
-        name.textContent = item.name;
-        itemText.appendChild(name);
+    const name = document.createElement('span');
+    name.className = 'item-name';
+    name.textContent = item.name;
+    itemText.appendChild(name);
 
-        itemDetails.appendChild(itemText);
-        menuItem.appendChild(itemDetails);
+    itemDetails.appendChild(itemText);
+    menuItem.appendChild(itemDetails);
 
-        const price = document.createElement('span');
-        price.className = 'item-price';
-        price.textContent = `$${item.price.toFixed(2)}`;
-        menuItem.appendChild(price);
+    const price = document.createElement('span');
+    price.className = 'item-price';
+    price.textContent = `$${item.price.toFixed(2)}`;
+    menuItem.appendChild(price);
 
-        items.appendChild(menuItem);
-    });
-
-    section.appendChild(items);
-    return section;
+    return menuItem;
 }
 
 // Function to render popular items
@@ -155,14 +149,87 @@ function updateTimeDisplay() {
     });
 }
 
+// Function to display popular dish of the day
+function displayPopularDish() {
+    const popularDishDisplay = document.getElementById('popularDishDisplay');
+    const currentHour = new Date().getHours();
+    let popularDish;
+
+    // Determine popular dish based on time of day
+    if (currentHour >= 6 && currentHour < 11) {
+        popularDish = {
+            name: "Breakfast Special",
+            description: "Fresh pancakes with maple syrup",
+            price: "$8.99",
+            available: true,
+            image: "img/b1.jpeg"
+        };
+    } else if (currentHour >= 11 && currentHour < 15) {
+        popularDish = {
+            name: "Lunch Special",
+            description: "Grilled chicken sandwich with fries",
+            price: "$12.99",
+            available: true,
+            image: "img/b2.jpeg"
+        };
+    } else if (currentHour >= 15 && currentHour < 22) {
+        popularDish = {
+            name: "Dinner Special",
+            description: "Herb-crusted salmon with roasted vegetables",
+            price: "$24.99",
+            available: true,
+            image: "img/b3.jpeg"
+        };
+    } else {
+        popularDish = {
+            name: "Late Night Snack",
+            description: "Cheese and crackers platter",
+            price: "$6.99",
+            available: false,
+            image: "img/b4.jpeg"
+        };
+    }
+
+    // Create and populate the dish card
+    const dishCard = document.createElement('div');
+    dishCard.className = `popular-dish-card ${!popularDish.available ? 'unavailable' : ''}`;
+    
+    dishCard.innerHTML = `
+        <div class="popular-dish-image">
+            <img src="${popularDish.image}" alt="${popularDish.name}">
+        </div>
+        <div class="popular-dish-content">
+            <h4>${popularDish.name}</h4>
+            <p class="description">${popularDish.description}</p>
+            <p class="price">${popularDish.price}</p>
+        </div>
+        ${!popularDish.available ? '<div class="unavailable-overlay">Currently Unavailable</div>' : ''}
+    `;
+
+    popularDishDisplay.innerHTML = '';
+    popularDishDisplay.appendChild(dishCard);
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    loadMenuData();
+    loadMenuData().then(() => {
+        renderMenus();
+        displayPopularDish();
+    });
     updateTimeDisplay();
     
     // Update time every minute
     setInterval(updateTimeDisplay, 60000);
     
-    // Refresh menu data every 5 minutes
-    setInterval(loadMenuData, 300000);
+    // Refresh menu data and popular dish every 5 minutes
+    setInterval(() => {
+        loadMenuData().then(() => {
+            renderMenus();
+            displayPopularDish();
+        });
+    }, 300000);
+
+    // Update popular dish display every hour
+    displayPopularDish();
+    setInterval(displayPopularDish, 3600000); // Update every hour
 }); 

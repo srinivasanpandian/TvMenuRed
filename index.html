@@ -14,22 +14,33 @@
     <div class="menu-container">
         <div class="menu-sections">
             <div class="menu-column" id="left-column">
-                <!-- Dynamically filled by JavaScript -->
+                <!-- Main Menu -->
+                <div class="menu-section">
+                    <h2>MAIN MENU</h2>
+                    <div class="menu-items" id="main-menu">
+                        <!-- Dynamically filled by JavaScript -->
+                    </div>
+                </div>
             </div>
 
             <div class="center-column">
                 <div class="logo-container">
                     <img src="img/logo.png" alt="Maghil Menu Logo" id="restaurant-logo">
                 </div>
-                
-                <div class="popular-items" id="popular-items">
-                    <h2>POPULAR CHOICES</h2>
-                    <!-- Dynamically filled by JavaScript -->
+                <div class="popular-dish-container">
+                    <h3>Featured Popular Dish</h3>
+                    <div id="popularDishDisplay"></div>
                 </div>
             </div>
 
             <div class="menu-column" id="right-column">
-                <!-- Dynamically filled by JavaScript -->
+                <!-- Dessert Menu -->
+                <div class="menu-section">
+                    <h2>DESSERT MENU</h2>
+                    <div class="menu-items" id="dessert-menu">
+                        <!-- Dynamically filled by JavaScript -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -40,7 +51,7 @@
     </div>
 
     <!-- Time and Date Display -->
-    <div class="time-display" id="time-display">
+    <div class="time-display" id="timeDisplay">
         <span id="current-time"></span>
         <span id="current-date"></span>
     </div>
