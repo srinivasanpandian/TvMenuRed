@@ -224,7 +224,9 @@ body {
 }
 
 .menu-item.unavailable {
-    opacity: 0.5;
+    opacity: 0.8;
+    position: relative;
+    padding-right: 200px;
 }
 
 .menu-item.unavailable::after {
@@ -239,6 +241,12 @@ body {
     border-radius: 8px;
     font-size: 1.4rem;
     font-weight: 500;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.menu-item.unavailable .item-price {
+    margin-right: 20px;
 }
 
 .popular-item.unavailable {
