@@ -1,0 +1,94 @@
+{
+    "categories": [
+        {
+            "name": "MAIN MENU",
+            "items": [
+                { "name": "GARLIC BREAD", "price": 10.49, "available": true, "image": "img/p4.jpg" },
+                { "name": "TRUFFLE PIZZA", "price": 16.99, "available": true, "image": "img/truffle-pizza.jpg" },
+                { "name": "CHICKEN WINGS", "price": 14.99, "available": true, "image": "img/chicken-wings.jpg" },
+                { "name": "MANGO SALAD", "price": 18.49, "available": false, "image": "img/mango-salad.jpg" },
+                { "name": "SUSHI ROLL", "price": 13.49, "available": true, "image": "img/sushi-roll.jpg" }
+            ]
+        },
+        {
+            "name": "SPECIAL MENU",
+            "items": [
+                { "name": "SPICY TACOS", "price": 15.99, "available": true, "image": "img/spicy-tacos.jpg" },
+                { "name": "VEGGIE BURGER", "price": 12.49, "available": false, "image": "img/veggie-burger.jpg" },
+                { "name": "CRISPY FRIES", "price": 13.99, "available": true, "image": "img/crispy-fries.jpg" },
+                { "name": "TOMATO SOUP", "price": 14.49, "available": true, "image": "img/tomato-soup.jpg" },
+                { "name": "GRILLED SALMON", "price": 11.99, "available": true, "image": "img/grilled-salmon.jpg" }
+            ]
+        },
+        {
+            "name": "DESSERT MENU",
+            "items": [
+                { "name": "CHOCOLATE LAVA CAKE", "price": 15.99, "available": true, "image": "img/chocolate-lava.jpg" },
+                { "name": "VANILLA ICE CREAM", "price": 12.49, "available": true, "image": "img/vanilla-ice.jpg" },
+                { "name": "TIRAMISU", "price": 13.99, "available": false, "image": "img/tiramisu.jpg" },
+                { "name": "FRUIT TART", "price": 14.49, "available": true, "image": "img/fruit-tart.jpg" },
+                { "name": "CHEESECAKE", "price": 11.99, "available": true, "image": "img/cheesecake.jpg" }
+            ]
+        },
+        {
+            "name": "DRINK MENU",
+            "items": [
+                { "name": "ICED LATTE", "price": 15.99, "available": true, "image": "img/iced-latte.jpg" },
+                { "name": "MANGO SMOOTHIE", "price": 12.49, "available": true, "image": "img/mango-smoothie.jpg" },
+                { "name": "LEMON TEA", "price": 13.99, "available": true, "image": "img/lemon-tea.jpg" },
+                { "name": "MOJITO MOCKTAIL", "price": 14.49, "available": false, "image": "img/mojito.jpg" },
+                { "name": "STRAWBERRY MILKSHAKE", "price": 11.99, "available": true, "image": "img/strawberry-shake.jpg" }
+            ]
+        }
+    ],
+    "featured_dishes": [
+        {
+            "name": "Grilled Chicken",
+            "image": "img/p1.jpg",
+            "available": true
+        },
+        {
+            "name": "Chicken Lollipop",
+            "image": "img/p2.jpg",
+            "available": true
+        },
+        {
+            "name": "Parotta",
+            "image": "img/p3.jpg",
+            "available": true
+        },
+        {
+            "name": "Chicken Biryani",
+            "image": "img/p4.jpg",
+            "available": true
+        }
+    ],
+    "popular_items": [
+        {
+            "name": "TRUFFLE PIZZA",
+            "price": 16.99,
+            "image": "img/truffle-pizza.jpg",
+            "description": "Our Best Seller",
+            "available": true
+        },
+        {
+            "name": "CHICKEN WINGS",
+            "price": 14.99,
+            "image": "img/chicken-wings.jpg",
+            "description": "Customer Favorite",
+            "available": true
+        },
+        {
+            "name": "CHOCOLATE LAVA CAKE",
+            "price": 15.99,
+            "image": "img/chocolate-lava.jpg",
+            "description": "Most Popular Dessert",
+            "available": true
+        }
+    ],
+    "restaurant_info": {
+        "name": "Maghil Menu",
+        "logo": "img/logo.png",
+        "refresh_interval": 300000
+    }
+} 

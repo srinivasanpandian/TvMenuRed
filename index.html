@@ -11,144 +11,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="button-container">
-        <button class="click-button">Click Me</button>
-    </div>
     <div class="menu-container">
-       
-
         <div class="menu-sections">
-            <div class="menu-column">
-                <div class="menu-section">
-                    <h2>MAIN MENU</h2>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <span class="item-name">GARLIC BREAD</span>
-                            <span class="item-price">$10.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">TRUFFLE PIZZA</span>
-                            <span class="item-price">$16.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">CHICKEN WINGS</span>
-                            <span class="item-price">$14.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">MANGO SALAD</span>
-                            <span class="item-price">$18.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">SUSHI ROLL</span>
-                            <span class="item-price">$13.49</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-section">
-                    <h2>SPECIAL MENU</h2>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <span class="item-name">SPICY TACOS</span>
-                            <span class="item-price">$15.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">VEGGIE BURGER</span>
-                            <span class="item-price">$12.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">CRISPY FRIES</span>
-                            <span class="item-price">$13.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">TOMATO SOUP</span>
-                            <span class="item-price">$14.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">GRILLED SALMON</span>
-                            <span class="item-price">$11.99</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="menu-column" id="left-column">
+                <!-- Dynamically filled by JavaScript -->
             </div>
 
-            <div class="featured-dishes">
-                <div class="dish">
-                    <img src="img/p1.jpg" alt="Grilled Chicken">
-                    <h3>Grilled Chicken</h3>
-                </div>
-                <div class="dish">
-                    <img src="img/p2.jpg" alt="Chicken Lollipop">
-                    <h3>Chicken Lollipop</h3>
-                </div>
+            <div class="center-column">
                 <div class="logo-container">
-                    <img src="img/logo.png" alt="Maghil Menu Logo" width="200px" height="200px">
+                    <img src="img/logo.png" alt="Maghil Menu Logo" id="restaurant-logo">
                 </div>
-                <div class="dish">
-                    <img src="img/p3.jpg" alt="Parotta">
-                    <h3>Parotta</h3>
-                </div>
-                <div class="dish">
-                    <img src="img/p4.jpg" alt="Chicken Biryani">
-                    <h3>Chicken Biryani</h3>
+                
+                <div class="popular-items" id="popular-items">
+                    <h2>POPULAR CHOICES</h2>
+                    <!-- Dynamically filled by JavaScript -->
                 </div>
             </div>
 
-            <div class="menu-column">
-                <div class="menu-section">
-                    <h2>DESSERT MENU</h2>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <span class="item-name">CHOCOLATE LAVA CAKE</span>
-                            <span class="item-price">$15.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">VANILLA ICE CREAM</span>
-                            <span class="item-price">$12.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">TIRAMISU</span>
-                            <span class="item-price">$13.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">FRUIT TART</span>
-                            <span class="item-price">$14.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">CHEESECAKE</span>
-                            <span class="item-price">$11.99</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-section">
-                    <h2>DRINK MENU</h2>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <span class="item-name">ICED LATTE</span>
-                            <span class="item-price">$15.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">MANGO SMOOTHIE</span>
-                            <span class="item-price">$12.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">LEMON TEA</span>
-                            <span class="item-price">$13.99</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">MOJITO MOCKTAIL</span>
-                            <span class="item-price">$14.49</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="item-name">STRAWBERRY MILKSHAKE</span>
-                            <span class="item-price">$11.99</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="menu-column" id="right-column">
+                <!-- Dynamically filled by JavaScript -->
             </div>
         </div>
     </div>
+
+    <!-- Status Message for Updates -->
+    <div class="status-message" id="status-message">
+        Menu Updated
+    </div>
+
+    <!-- Time and Date Display -->
+    <div class="time-display" id="time-display">
+        <span id="current-time"></span>
+        <span id="current-date"></span>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html> 
