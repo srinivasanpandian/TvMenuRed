@@ -1,11 +1,20 @@
 let menuData = null;
+let previousMenuData = null;
 
 // Function to load menu data
 async function loadMenuData() {
     try {
         const response = await fetch('menu.json');
-        menuData = await response.json();
-        renderMenus();
+        const newMenuData = await response.json();
+        
+        // Check if menu data has changed
+        if (JSON.stringify(newMenuData) !== JSON.stringify(previousMenuData)) {
+            menuData = newMenuData;
+            previousMenuData = newMenuData;
+            renderMenus();
+            displayPopularDish();
+            showStatusMessage();
+        }
     } catch (error) {
         console.error('Error loading menu:', error);
     }
@@ -118,10 +127,21 @@ function renderPopularItems() {
     });
 }
 
-// Function to show status message
+// Function to show status message with animation
 function showStatusMessage() {
     const message = document.getElementById('status-message');
+    message.textContent = 'Menu Updated - ' + new Date().toLocaleTimeString();
     message.classList.add('show');
+    
+    // Add a subtle flash effect to the updated items
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+        item.classList.add('update-flash');
+        setTimeout(() => {
+            item.classList.remove('update-flash');
+        }, 1000);
+    });
+
     setTimeout(() => {
         message.classList.remove('show');
     }, 3000);
@@ -212,24 +232,15 @@ function displayPopularDish() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    loadMenuData().then(() => {
-        renderMenus();
-        displayPopularDish();
-    });
+    loadMenuData();
     updateTimeDisplay();
     
     // Update time every minute
     setInterval(updateTimeDisplay, 60000);
     
-    // Refresh menu data and popular dish every 5 minutes
-    setInterval(() => {
-        loadMenuData().then(() => {
-            renderMenus();
-            displayPopularDish();
-        });
-    }, 300000);
+    // Check for menu updates every 2 seconds
+    setInterval(loadMenuData, 2000);
 
     // Update popular dish display every hour
-    displayPopularDish();
-    setInterval(displayPopularDish, 3600000); // Update every hour
+    setInterval(displayPopularDish, 3600000);
 }); 
